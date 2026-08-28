@@ -1,0 +1,48 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: w4-database
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-docker}
+      MYSQL_DATABASE: ${DB_NAME:-wordpress}
+      MYSQL_USER: ${DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-wordpress}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "${DB_PORT:-3306}:3306"
+
+  youmeos:
+    image: xengenie/youmeos:latest
+    container_name: w4-youmeos
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    ports:
+      - "${PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    volumes:
+      - ./plugins:/var/www/custom-plugins
+    environment:
+      - PORT=80
+      - HTTPS_PORT=443
+      - WP_DEBUG=${WP_DEBUG:-false}
+      - WORDPRESS_DB_HOST=mariadb:3306
+      - WORDPRESS_DB_NAME=${DB_NAME:-wordpress}
+      - WORDPRESS_DB_USER=${DB_USER:-wordpress}
+      - WORDPRESS_DB_PASSWORD=${DB_PASSWORD:-wordpress}
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: w4-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+    ports:
+      - "${PMA_PORT:-8080}:80"
+
+volumes:
+  db_data: {}

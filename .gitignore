@@ -1,0 +1,27 @@
+# Environment
+.env
+.env.local
+
+# Node & Build artifacts
+node_modules/
+dist/
+.vite-error.log
+
+# Database & SQLite files
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+wp-content/*.sqlite*
+wp-content/database.sqlite*
+
+# Docker Image Managed WordPress Content
+wp-content/mu-plugins/
+wp-content/db.php
+
+# Logs & Temporary files
+*.log
+wp-content/*.log
+wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+.DS_Store
+Thumbs.db
