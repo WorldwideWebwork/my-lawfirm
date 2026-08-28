@@ -1,0 +1,6 @@
+[submodule "plugins/xophz-compass-diego-lawfirm"]
+	path = plugins/xophz-compass-diego-lawfirm
+	url = git@github.com:WorldwideWebwork/xophz-compass-diego-lawfirm.git
+[submodule "apps/lawfirm"]
+	path = apps/lawfirm
+	url = git@github.com:diegocarreira/lawfirm.git

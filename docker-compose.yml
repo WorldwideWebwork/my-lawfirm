@@ -1,7 +1,7 @@
 services:
   mariadb:
     image: mariadb:11
-    container_name: w4-database
+    container_name: w4-lawfirm-db
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-docker}
@@ -15,7 +15,7 @@ services:
 
   youmeos:
     image: xengenie/youmeos:latest
-    container_name: w4-youmeos
+    container_name: w4-lawfirm
     restart: unless-stopped
     depends_on:
       - mariadb
@@ -33,9 +33,20 @@ services:
       - WORDPRESS_DB_USER=${DB_USER:-wordpress}
       - WORDPRESS_DB_PASSWORD=${DB_PASSWORD:-wordpress}
 
+  node:
+    image: node:20-alpine
+    container_name: w4-lawfirm-node
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./apps/lawfirm:/app
+    ports:
+      - "${DEV_PORT:-8090}:8090"
+    command: sh -c "npm install -g pnpm && pnpm install && pnpm dev"
+
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: w4-phpmyadmin
+    container_name: w4-lawfirm-pma
     restart: unless-stopped
     depends_on:
       - mariadb
