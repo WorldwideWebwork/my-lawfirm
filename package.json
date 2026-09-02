@@ -1,0 +1,11 @@
+{
+  "name": "lawfirm-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter diego-lawfirm dev",
+    "dev:lawfirm": "pnpm --filter diego-lawfirm dev",
+    "build": "pnpm --filter diego-lawfirm build",
+    "build:lawfirm": "pnpm --filter diego-lawfirm build"
+  }
+}

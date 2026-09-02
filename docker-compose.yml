@@ -15,6 +15,7 @@ services:
 
   youmeos:
     image: xengenie/youmeos:latest
+    platform: linux/amd64
     container_name: w4-lawfirm
     restart: unless-stopped
     depends_on:
@@ -28,21 +29,22 @@ services:
       - PORT=80
       - HTTPS_PORT=443
       - WP_DEBUG=${WP_DEBUG:-false}
+      - FS_METHOD=direct
       - WORDPRESS_DB_HOST=mariadb:3306
       - WORDPRESS_DB_NAME=${DB_NAME:-wordpress}
       - WORDPRESS_DB_USER=${DB_USER:-wordpress}
       - WORDPRESS_DB_PASSWORD=${DB_PASSWORD:-wordpress}
 
   node:
-    image: node:20-alpine
+    image: node:20
     container_name: w4-lawfirm-node
     restart: unless-stopped
-    working_dir: /app
+    working_dir: /workspace/apps/lawfirm
     volumes:
-      - ./apps/lawfirm:/app
+      - ./:/workspace
     ports:
       - "${DEV_PORT:-8090}:8090"
-    command: sh -c "npm install -g pnpm && pnpm install && pnpm dev"
+    command: npx vite --host 0.0.0.0 --port 8090
 
   phpmyadmin:
     image: phpmyadmin:latest
