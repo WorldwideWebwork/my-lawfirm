@@ -25,3 +25,6 @@ wp-content/upgrade/
 wp-content/upgrade-temp-backup/
 .DS_Store
 Thumbs.db
+
+# agent files
+.agents/*
