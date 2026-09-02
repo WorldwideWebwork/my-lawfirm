@@ -4,3 +4,6 @@
 [submodule "apps/lawfirm"]
 	path = apps/lawfirm
 	url = git@github.com:diegocarreira/lawfirm.git
+[submodule "docs"]
+	path = docs
+	url = git@github.com:WorldwideWebwork/my-lawfirm.wiki.git

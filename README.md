@@ -1,4 +1,4 @@
-# W4 Lawfirm (Diego Lawfirm)
+# w⁴ My Lawfirm 
 
 [![W4 OS Platform](https://img.shields.io/badge/Platform-W4%20OS%20%7C%20YouMeOS-00d2ff?style=for-the-badge&logo=electron&logoColor=white)](https://github.com)
 [![Ecosystem](https://img.shields.io/badge/Ecosystem-Xophz%20COMPASS-62c9ff?style=for-the-badge&logo=compass&logoColor=white)](https://github.com)
@@ -60,8 +60,8 @@ Packaged as a modern monorepo, the platform combines a responsive single-page ap
   * Native 4-locale runtime switching without browser reload: English (`en_US`), Portuguese (`pt_BR`), Spanish (`es_ES`), and French (`fr_FR`).
   * 100% dictionary key parity across semantic keys with multi-tier fallback hierarchy.
 * **Xophz COMPASS / YouMeOS Spark Integration:**
-  * Native registration with the YouMeOS Spark ecosystem (`/wp-json/diego-lawfirm/v1/manifest`).
-  * Flexible frontend routing: standalone route (`/lawfirm`), configurable custom slug, or full site takeover.
+  * Native registration with the YouMeOS Spark ecosystem (`/wp-json/my-lawfirm/v1/manifest`).
+  * Flexible frontend routing: standalone routes (`/lawfirm`, `/my-lawfirm`), configurable custom slug, or full site takeover.
 
 ---
 
@@ -242,15 +242,15 @@ node apps/lawfirm/scripts/test-i18n.js
 
 ## REST API and RPC Gateway
 
-The backend exposes standardized endpoints under `/wp-json/diego-lawfirm/v1`:
+The backend exposes standardized endpoints under `/wp-json/my-lawfirm/v1` (with `/wp-json/diego-lawfirm/v1` alias):
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/wp-json/diego-lawfirm/v1/manifest` | Returns the YouMeOS Spark structural manifest and integration metadata. |
-| `GET` | `/wp-json/diego-lawfirm/v1/status` | Returns system diagnostics, active database tables, and connection health. |
-| `POST` | `/wp-json/diego-lawfirm/v1/rpc` | Main authenticated RPC controller (Clients, Processes, Tasks, Finance, Auth). |
-| `POST` | `/wp-json/diego-lawfirm/v1/upload` | Secure multipart upload handler with company tenancy isolation. |
-| `POST` | `/wp-json/diego-lawfirm/v1/download` | Secure binary stream download handler for stored case documentation. |
+| `GET` | `/wp-json/my-lawfirm/v1/manifest` | Returns the YouMeOS Spark structural manifest and integration metadata. |
+| `GET` | `/wp-json/my-lawfirm/v1/status` | Returns system diagnostics, active database tables, and connection health. |
+| `POST` | `/wp-json/my-lawfirm/v1/rpc` | Main authenticated RPC controller (Clients, Processes, Tasks, Finance, Auth). |
+| `POST` | `/wp-json/my-lawfirm/v1/upload` | Secure multipart upload handler with company tenancy isolation. |
+| `POST` | `/wp-json/my-lawfirm/v1/download` | Secure binary stream download handler for stored case documentation. |
 
 ---
 
